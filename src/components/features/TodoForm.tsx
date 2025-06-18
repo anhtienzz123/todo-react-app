@@ -1,3 +1,4 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -12,12 +13,12 @@ interface TodoFormProps {
     isEdit?: boolean;
 }
 
-export function TodoForm({
+export const TodoForm: React.FC<TodoFormProps> = ({
     onSubmit,
     todo,
     onCancel,
     isEdit = false,
-}: TodoFormProps) {
+}) => {
     const {
         register,
         handleSubmit,
@@ -123,4 +124,4 @@ export function TodoForm({
             </CardContent>
         </Card>
     );
-}
+};

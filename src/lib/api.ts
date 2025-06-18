@@ -4,7 +4,8 @@ import type { Todo, CreateTodoData, UpdateTodoData } from '../types/todo';
 // const API_BASE_URL = 'http://localhost:3001/api'; // Update with your actual API URL
 
 // Simulate API delay
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: number): Promise<void> =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
 export const todoApi = {
     // Get all todos

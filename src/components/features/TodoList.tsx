@@ -1,3 +1,4 @@
+import React from 'react';
 import { TodoItem } from './TodoItem';
 import type { Todo, CreateTodoData } from '../../types/todo';
 
@@ -8,12 +9,12 @@ interface TodoListProps {
     onUpdate: (id: string, data: CreateTodoData) => void;
 }
 
-export function TodoList({
+export const TodoList: React.FC<TodoListProps> = ({
     todos,
     onToggle,
     onDelete,
     onUpdate,
-}: TodoListProps) {
+}) => {
     if (todos.length === 0) {
         return (
             <div className='flex flex-col items-center justify-center py-12 text-center'>
@@ -28,8 +29,10 @@ export function TodoList({
         );
     }
 
-    const completedTodos = todos.filter((todo) => todo.completed);
-    const incompleteTodos = todos.filter((todo) => !todo.completed);
+    const completedTodos: Todo[] = todos.filter((todo: Todo) => todo.completed);
+    const incompleteTodos: Todo[] = todos.filter(
+        (todo: Todo) => !todo.completed
+    );
 
     return (
         <div className='space-y-6'>
@@ -74,4 +77,4 @@ export function TodoList({
             )}
         </div>
     );
-}
+};

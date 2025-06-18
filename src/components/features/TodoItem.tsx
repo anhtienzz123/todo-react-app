@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Trash2, Edit3, Calendar } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Checkbox } from '../ui/checkbox';
@@ -19,13 +19,13 @@ interface TodoItemProps {
     onUpdate: (id: string, data: CreateTodoData) => void;
 }
 
-export function TodoItem({
+export const TodoItem: React.FC<TodoItemProps> = ({
     todo,
     onToggle,
     onDelete,
     onUpdate,
-}: TodoItemProps) {
-    const [isEditing, setIsEditing] = useState(false);
+}) => {
+    const [isEditing, setIsEditing] = useState<boolean>(false);
 
     const handleEdit = () => {
         setIsEditing(true);
@@ -46,7 +46,7 @@ export function TodoItem({
         }
     };
 
-    const formatDate = (date: Date) => {
+    const formatDate = (date: Date): string => {
         return new Intl.DateTimeFormat('en-US', {
             month: 'short',
             day: 'numeric',
@@ -132,4 +132,4 @@ export function TodoItem({
             </CardContent>
         </Card>
     );
-}
+};

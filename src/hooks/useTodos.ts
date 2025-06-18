@@ -3,7 +3,7 @@ import type { CreateTodoData } from '../types/todo';
 
 // This hook provides a clean interface for todo operations
 // In the future, this could be enhanced with TanStack Query for server state management
-export function useTodos() {
+export const useTodos = () => {
     const {
         todos,
         isLoading,
@@ -23,7 +23,7 @@ export function useTodos() {
             addTodo(data);
             // In the future, this could use TanStack Query mutation:
             // await createTodoMutation.mutateAsync(data);
-        } catch (err) {
+        } catch (err: unknown) {
             setError(err instanceof Error ? err.message : 'Failed to add todo');
         } finally {
             setLoading(false);
@@ -37,7 +37,7 @@ export function useTodos() {
             updateTodo(id, data);
             // In the future, this could use TanStack Query mutation:
             // await updateTodoMutation.mutateAsync({ id, data });
-        } catch (err) {
+        } catch (err: unknown) {
             setError(
                 err instanceof Error ? err.message : 'Failed to update todo'
             );
@@ -53,7 +53,7 @@ export function useTodos() {
             deleteTodo(id);
             // In the future, this could use TanStack Query mutation:
             // await deleteTodoMutation.mutateAsync(id);
-        } catch (err) {
+        } catch (err: unknown) {
             setError(
                 err instanceof Error ? err.message : 'Failed to delete todo'
             );
@@ -69,7 +69,7 @@ export function useTodos() {
             toggleTodo(id);
             // In the future, this could use TanStack Query mutation:
             // await toggleTodoMutation.mutateAsync(id);
-        } catch (err) {
+        } catch (err: unknown) {
             setError(
                 err instanceof Error ? err.message : 'Failed to toggle todo'
             );
@@ -87,4 +87,4 @@ export function useTodos() {
         deleteTodo: handleDeleteTodo,
         toggleTodo: handleToggleTodo,
     };
-}
+};

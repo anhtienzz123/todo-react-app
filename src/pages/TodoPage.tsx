@@ -1,9 +1,10 @@
+import React from 'react';
 import { useTodos } from '../hooks/useTodos';
 import { TodoForm } from '../components/features/TodoForm';
 import { TodoList } from '../components/features/TodoList';
-import type { CreateTodoData } from '../types/todo';
+import type { CreateTodoData, Todo } from '../types/todo';
 
-export function TodoPage() {
+export const TodoPage: React.FC = () => {
     const {
         todos,
         isLoading,
@@ -23,7 +24,9 @@ export function TodoPage() {
     };
 
     const totalTodos = todos.length;
-    const completedTodos = todos.filter((todo) => todo.completed).length;
+    const completedTodos: number = todos.filter(
+        (todo: Todo) => todo.completed
+    ).length;
     const incompleteTodos = totalTodos - completedTodos;
 
     return (
@@ -77,4 +80,4 @@ export function TodoPage() {
             </div>
         </div>
     );
-}
+};
